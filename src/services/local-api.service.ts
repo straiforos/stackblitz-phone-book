@@ -1,7 +1,13 @@
 import { Observable, of, Subject } from 'rxjs';
 import { Entity } from '../interfaces/models/mixins/entity';
 import { CRUD } from '../interfaces/services/mixins/CRUD';
-import { uniqBy } from 'lodash';
+/**
+ * Could not find a declaration file for module 'lodash'. '/turbo_modules/lodash@4.17.21/lodash.js'
+ * implicitly has an 'any' type.
+ * Try `npm i --save-dev @types/lodash` if it exists or add a new declaration (.d.ts) file containing
+ * `declare module 'lodash';`
+ */
+// import { uniqBy } from 'lodash';
 
 export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   /**
@@ -31,9 +37,11 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
     model: Omit<T, 'id' | 'createdAt' | 'updatedAt'>
   ): Observable<T> {
     // Create the model by assigning an incremented id, and intializing the timestamps.
+    const autoIncrement = this.collection.length;
+    const id = autoIncrement+1;
     const newModel: T = {
       ...model,
-      id: ++this.collection.length,
+      id,
       createdAt: new Date(),
       updatedAt: new Date(),
     } as T;
@@ -41,6 +49,7 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
     this.collection.push(newModel);
     // Store model by id in the index for fast lookup.
     this.index.set(newModel.id, newModel);
+    this.collection = this.collection;
     return of(newModel);
   }
 
@@ -53,10 +62,15 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   public update(model: T): Observable<T> {
     // Update the updatedAt timestamp.
     const updatedModel = { ...model, updatedAt: new Date() };
-    // Add the model to the collection
-    this.collection.push(updatedModel);
-    // Remove duplicates instead of using a splice or indexof.
-    this.collection = uniqBy(this.collection, 'id' as keyof Entity);
+
+    // Lodash types import has issues in stackblitz so I resorted to indexOf and splice.
+    const existingModel = this.index.get(model.id);
+    const indexOfModel = !!existingModel
+      ? this.collection.indexOf(existingModel)
+      : null;
+    // Update the model in the collection using index. If no index we just add it to the collection.
+    if (indexOfModel) this.collection[indexOfModel] = updatedModel;
+    else this.collection.push(updatedModel);
     // Replace the model in the index so no caches/stale entities can be returned.
     this.index.set(model.id, updatedModel);
     return of(updatedModel);

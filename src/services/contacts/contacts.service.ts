@@ -11,11 +11,13 @@ export class ContactsService
   implements ContactsAPI
 {
   private contacts: [] = [];
-  // TODO type maps allowing for O(1) look up for many to many relationships.
+  // Maps allow for O(1) look up for many to many relationships.
   private phoneNumberToPeopleMap: Map<number, Person[]> = new Map();
   private personIdToPhonenumbersMap: Map<number, PhoneNumberPipe[]> = new Map();
 
   constructor() {
     super();
   }
+
+  // TODO override create, update, delete to manipulate the relationship maps.
 }

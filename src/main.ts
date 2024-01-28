@@ -10,7 +10,7 @@ import { PhoneBookComponent } from './components/phone-book/phone-book.component
     <a target="_blank" href="https://registry.jsonresume.org/straiforos">
       Checkout my json Resume
     </a>
-    <app-phonebook></app-phonebook>
+    <app-phone-book></app-phone-book>
   `,
   standalone: true,
   imports: [PhoneBookComponent],

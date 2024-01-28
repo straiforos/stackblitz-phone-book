@@ -1,19 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
-import { Contact } from '../../interfaces/models/contact';
+import { Contact as IContact } from '../../interfaces/models/contact';
+import { NamePipe } from '../../pipes/name/name.pipe';
 import { ContactsService } from '../../services/contacts/contacts.service';
+import { Contact } from '../../models/contact.model';
+import { ContactFormComponent } from '../contact-form/contact-form.component';
 
 @Component({
   selector: 'app-phone-book',
   templateUrl: './phone-book.component.html',
   styleUrls: ['./phone-book.component.css'],
   standalone: true,
-  providers: [ContactsService],
+  imports: [CommonModule, NamePipe, ContactFormComponent],
+  providers: [ContactsService, NamePipe],
 })
 export class PhoneBookComponent {
   constructor(private contactsService: ContactsService) {}
-  public contacts: Observable<Contact[]> = this.contactsService
+  public contacts: Observable<IContact[]> = this.contactsService
     .findAll()
     .pipe(takeUntilDestroyed());
 }

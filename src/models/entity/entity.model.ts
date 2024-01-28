@@ -1,4 +1,3 @@
-import { identity } from 'lodash/fp/placeholder';
 import { Entity as IEntity } from '../../interfaces/models/mixins/entity';
 
 export class Entity implements IEntity {

@@ -16,6 +16,7 @@ type FormatOptions = FirstnameLastname | LastnameFirstname;
 
 @Pipe({
   name: 'name',
+  standalone: true,
 })
 export class NamePipe implements PipeTransform {
   transform(person: Person, format: FormatOptions = 'FL'): any {
