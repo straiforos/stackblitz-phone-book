@@ -1,11 +1,5 @@
 import { NgModule } from '@angular/core';
-import {
-  provideRouter,
-  Route,
-  RouterModule,
-  Routes,
-  withComponentInputBinding,
-} from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ContactFormComponent, PhoneBookComponent } from './components';
 import { contactResolver } from './resolvers/contact.resolver';
 import { EditContactComponent } from '@components/edit-contact/edit-contact.component';

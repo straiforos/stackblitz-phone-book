@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { Contact as IContact } from '../../interfaces/models/contact';
-import { Contact } from '../../models/contact.model';
-import { ContactsService } from '../../services/contacts/contacts.service';
+import { Component } from '@angular/core';
+import { Contact as IContact } from '@interfaces/models';
+import { Contact } from '@models/contact.model';
+import { ContactsService } from '@services/contacts/contacts.service';
 import { switchMap } from 'rxjs';
 import { fromPromise } from 'rxjs/internal/observable/innerFrom';
 import { Router } from '@angular/router';
