@@ -11,8 +11,7 @@ import { ContactsService } from '@services/contacts/contacts.service';
 })
 export class PhoneBookComponent {
   constructor(private contactsService: ContactsService) {}
-  public contacts: Observable<IContact[]> = this.contactsService.findAll().pipe(
-    takeUntilDestroyed(),
-    tap((c) => console.log(c)),
-  );
+  public contacts: Observable<IContact[]> = this.contactsService
+    .findAll()
+    .pipe(takeUntilDestroyed());
 }
