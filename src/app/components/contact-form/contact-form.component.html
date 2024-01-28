@@ -1,0 +1,51 @@
+<form #contactForm="ngForm" (ngSubmit)="submit()">
+  <div>
+    <label for="firstname">First Name *</label>
+    <input
+      name="firstname"
+      id="firstname"
+      type="text"
+      [(ngModel)]="contact.firstName"
+      required
+    />
+  </div>
+  <div>
+    <label for="lastname">Last Name *</label>
+    <input
+      name="lastname"
+      id="lastname"
+      type="text"
+      [(ngModel)]="contact.lastName"
+      required
+    />
+  </div>
+  <div>
+    <label for="middlename">Middle Name</label>
+    <input
+      name="middlename"
+      id="middlename"
+      type="text"
+      [(ngModel)]="contact.middleName"
+    />
+  </div>
+  <div>
+    <label for="preferredname">Preferred Name</label>
+    <input
+      name="preferredname"
+      id="preferredname"
+      type="text"
+      [(ngModel)]="contact.preferredName"
+    />
+  </div>
+  <div>
+    <label for="phd">PHD</label>
+    <input
+      name="phd"
+      id="phd"
+      type="checkbox"
+      [ngModel]="contact.credentials !== null"
+      (ngModelChanges)="toggleCredentials()"
+    />
+  </div>
+  <button type="submit" [disabled]="contactForm.invalid">Save</button>
+</form>
