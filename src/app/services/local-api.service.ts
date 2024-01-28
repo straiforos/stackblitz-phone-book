@@ -1,6 +1,6 @@
 import { Observable, of, Subject } from 'rxjs';
-import { Entity } from '../interfaces/models/mixins/entity';
-import { CRUD } from '../interfaces/services/mixins/CRUD';
+import { Entity } from "@interfaces/models/mixins/entity";
+import { CRUD } from '@interfaces/services/mixins/CRUD';
 /**
  * Could not find a declaration file for module 'lodash'. '/turbo_modules/lodash@4.17.21/lodash.js'
  * implicitly has an 'any' type.
@@ -36,7 +36,7 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   public create(
     model: Omit<T, 'id' | 'createdAt' | 'updatedAt'>
   ): Observable<T> {
-    // Create the model by assigning an incremented id, and intializing the timestamps.
+    // Create the model by assigning an incremented id, and initializing the timestamps.
     const autoIncrement = this.collection.length;
     const id = autoIncrement+1;
     const newModel: T = {
@@ -63,7 +63,7 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
     // Update the updatedAt timestamp.
     const updatedModel = { ...model, updatedAt: new Date() };
 
-    // Lodash types import has issues in stackblitz so I resorted to indexOf and splice.
+    // Lodash types import has issues in stackblitz, so I resorted to indexOf and splice.
     const existingModel = this.index.get(model.id);
     const indexOfModel = !!existingModel
       ? this.collection.indexOf(existingModel)
@@ -84,7 +84,7 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   }
 
   /**
-   * Returns all entities, utilizes a subject so the consumers can recieve updates
+   * Returns all entities, utilizes a subject so the consumers can receive updates
    * from the create, update, delete functionality.
    */
   public findAll(): Observable<T[]> {

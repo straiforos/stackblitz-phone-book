@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Person } from '../../interfaces/models/person';
+import { Person } from '@interfaces/models/person';
 /**
  * First name Last name formatting.
  * example Person { firstName: 'Miles', lastName: 'Morales', middleName: 'Gonzalo', preferredName: 'Spider Man' } outputs: "Miles Morales"
@@ -16,7 +16,6 @@ type FormatOptions = FirstnameLastname | LastnameFirstname;
 
 @Pipe({
   name: 'name',
-  standalone: true,
 })
 export class NamePipe implements PipeTransform {
   transform(person: Person, format: FormatOptions = 'FL'): any {

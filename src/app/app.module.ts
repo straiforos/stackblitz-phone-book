@@ -13,15 +13,11 @@ import { ContactFormComponent, PhoneBookComponent } from './components';
   declarations: [
     AppComponent,
     PhoneBookComponent,
-    ContactFormComponent
+    ContactFormComponent,
+    NamePipe,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    CommonModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [ContactsService, NamePipe],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
