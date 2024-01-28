@@ -1,7 +1,11 @@
 <ol>
   <li *ngFor="let contact of contacts | async">
     {{ contact | name }}
-    <!-- TODO message for mobile, call for all numbers -->
+    <ul>
+      <li *ngFor="let phone of contact.numbers">
+        {{ phone.phoneNumber | phoneNumber }}
+      </li>
+    </ul>
   </li>
 </ol>
 <a [routerLink]="['/add-contact']">Add Contact</a>
