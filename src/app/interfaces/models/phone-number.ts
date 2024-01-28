@@ -5,7 +5,7 @@ import { Entity } from './mixins/entity';
  * @see Entity
  */
 export interface PhoneNumber extends Entity {
-  phoneNumber: number;
+  phoneNumber: string;
   areaCode: '+1';
   type: 'mobile' | 'home' | 'work';
 }

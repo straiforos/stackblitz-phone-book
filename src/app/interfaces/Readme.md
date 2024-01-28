@@ -2,9 +2,9 @@
 
 - How we define functionality in a system
 - How we define data shape/typing.
-- Composition allows for flexibility and reusing leading to greater consistancy and variation simulatiously.
+- Composition allows for flexibility and reusing leading to greater consistency and variation simultaneously.
 
-  - Implies an interface that creates a object beyond composite functionality and properties.
+  - Implies an interface that creates an object beyond composite functionality and properties.
 
   ## TODOs
 

@@ -6,6 +6,6 @@
 ## TODOS
 
 - Person
-- Phonenumber
+- PhoneNumber
 - Contact
 - PhoneBook - TODO

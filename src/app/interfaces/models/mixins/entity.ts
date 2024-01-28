@@ -1,6 +1,5 @@
-
 /**
- * Entity is a abstraction usually used at the persistance level. 
+ * Entity is an abstraction usually used at the persistence level.
  * Supports unique identifier, and timestamps.
  */
 export interface Entity {

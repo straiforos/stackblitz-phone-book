@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { Entity } from '../../models/mixins/entity';
+import { Entity } from '@interfaces/models';
 
 /**
  * Defines Create Read Update Delete functionality to be reused across services.

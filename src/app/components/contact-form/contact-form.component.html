@@ -1,9 +1,9 @@
 <form #contactForm="ngForm" (ngSubmit)="submit()">
   <div>
-    <label for="firstname">First Name *</label>
+    <label for="firstName">First Name *</label>
     <input
-      name="firstname"
-      id="firstname"
+      name="firstName"
+      id="firstName"
       type="text"
       [(ngModel)]="contact.firstName"
       required
@@ -20,19 +20,19 @@
     />
   </div>
   <div>
-    <label for="middlename">Middle Name</label>
+    <label for="middleName">Middle Name</label>
     <input
-      name="middlename"
-      id="middlename"
+      name="middleName"
+      id="middleName"
       type="text"
       [(ngModel)]="contact.middleName"
     />
   </div>
   <div>
-    <label for="preferredname">Preferred Name</label>
+    <label for="preferredName">Preferred Name</label>
     <input
-      name="preferredname"
-      id="preferredname"
+      name="preferredName"
+      id="preferredName"
       type="text"
       [(ngModel)]="contact.preferredName"
     />
@@ -43,9 +43,19 @@
       name="phd"
       id="phd"
       type="checkbox"
-      [ngModel]="contact.credentials !== null"
-      (ngModelChanges)="toggleCredentials()"
+      [ngModel]="!!contact.credentials"
+      (change)="toggleCredentials()"
     />
   </div>
+
+  <div>
+    <div *ngFor="let contactTelephone of contact.numbers">
+      <app-phone-number-form [phone]="contactTelephone"></app-phone-number-form>
+    </div>
+    <a (click)="addPhoneNumber()">+ Add Phone Number</a>
+  </div>
+
   <button type="submit" [disabled]="contactForm.invalid">Save</button>
 </form>
+
+

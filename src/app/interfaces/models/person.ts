@@ -8,6 +8,10 @@ export interface Person extends Entity {
   firstName: string;
   lastName: string;
   middleName: string;
+  /**
+   * Should be renamed to prefix
+   * @deprecated
+   */
   credentials?: 'PhD';
   preferredName?: string;
 }

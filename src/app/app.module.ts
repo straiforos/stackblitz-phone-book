@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ContactsService } from './services/contacts/contacts.service';
-import { NamePipe } from './pipes/name/name.pipe';
+
+// Application declarations
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { ContactsService } from './services';
+import { NamePipe } from './pipes';
 import { ContactFormComponent, PhoneBookComponent } from './components';
+import { PhoneNumberFormComponent } from './components/phone-number-form/phone-number-form.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,7 @@ import { ContactFormComponent, PhoneBookComponent } from './components';
     PhoneBookComponent,
     ContactFormComponent,
     NamePipe,
+    PhoneNumberFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [ContactsService, NamePipe],

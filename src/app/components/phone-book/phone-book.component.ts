@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable } from 'rxjs';
-import { Contact as IContact } from '../../interfaces/models/contact';
-import { ContactsService } from '../../services/contacts/contacts.service';
+import { Observable, tap } from 'rxjs';
+import { Contact as IContact } from '@interfaces/models/contact';
+import { ContactsService } from '@services/contacts/contacts.service';
 
 @Component({
   selector: 'app-phone-book',
@@ -11,8 +11,8 @@ import { ContactsService } from '../../services/contacts/contacts.service';
 })
 export class PhoneBookComponent {
   constructor(private contactsService: ContactsService) {}
-  public contacts: Observable<IContact[]> = this.contactsService
-    .findAll()
-    .pipe(takeUntilDestroyed());
-  protected readonly name = name;
+  public contacts: Observable<IContact[]> = this.contactsService.findAll().pipe(
+    takeUntilDestroyed(),
+    tap((c) => console.log(c)),
+  );
 }

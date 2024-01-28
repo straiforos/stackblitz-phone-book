@@ -1,0 +1,10 @@
+<form>
+    <label>Phone number:</label>
+    <input type="tel" name="telephone" id="telephone" [(ngModel)]="phone.phoneNumber" />
+    <label>Type</label>
+    <select name="telephone-type" id="telephone-type" [(ngModel)]="phone.type">
+      <option value="home">Home</option>
+      <option value="mobile">Mobile</option>
+      <option value="work">Work</option>
+    </select>
+</form>

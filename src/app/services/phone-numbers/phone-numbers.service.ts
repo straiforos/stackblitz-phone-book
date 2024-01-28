@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 // TODO clean up imports with index file.
-import { PhoneNumber } from '../../interfaces/models/phone-number';
-import { PhoneNumbersAPI } from '../../interfaces/services/phone-numbers';
+import { PhoneNumber } from '@interfaces/models/phone-number';
+import { PhoneNumbersAPI } from '@interfaces/services/phone-numbers';
 import { LocalAPIService } from '../local-api.service';
 
 @Injectable()

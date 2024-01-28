@@ -2,12 +2,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Person } from '@interfaces/models/person';
 /**
  * First name Last name formatting.
- * example Person { firstName: 'Miles', lastName: 'Morales', middleName: 'Gonzalo', preferredName: 'Spider Man' } outputs: "Miles Morales"
+ * example Person { firstName: 'Miles', lastName: 'Morales', middleName: 'Gonzalo', preferredName: 'Spider-Man' } outputs: "Miles Morales"
  */
 type FirstnameLastname = 'FL';
 /**
  * Last name, First name formatting.
- * example Person { firstName: 'Miles', lastName: 'Morales', middleName: 'Gonzalo', preferredName: 'Spider Man' } outputs: "Morales, Miles"
+ * example Person { firstName: 'Miles', lastName: 'Morales', middleName: 'Gonzalo', preferredName: 'Spider-Man' } outputs: "Morales, Miles"
  */
 type LastnameFirstname = 'LF';
 
