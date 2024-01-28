@@ -1,6 +1,6 @@
-import { Observable, of, Subject } from 'rxjs';
-import { Entity } from '../interfaces/models/mixins/entity';
-import { CRUD } from '../interfaces/services/mixins/CRUD';
+import { BehaviorSubject, Observable, of, ReplaySubject, Subject } from "rxjs";
+import { Entity } from "../interfaces/models/mixins/entity";
+import { CRUD } from "../interfaces/services/mixins/CRUD";
 /**
  * Could not find a declaration file for module 'lodash'. '/turbo_modules/lodash@4.17.21/lodash.js'
  * implicitly has an 'any' type.
@@ -31,14 +31,16 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   /**
    * Collection subject allows for listening for updates on the datastore.
    */
-  protected collectionSubject: Subject<T[]> = new Subject();
+  protected collectionSubject: BehaviorSubject<T[]> = new BehaviorSubject(
+    [] as T[],
+  );
 
   public create(
-    model: Omit<T, 'id' | 'createdAt' | 'updatedAt'>
+    model: Omit<T, "id" | "createdAt" | "updatedAt">,
   ): Observable<T> {
     // Create the model by assigning an incremented id, and intializing the timestamps.
     const autoIncrement = this.collection.length;
-    const id = autoIncrement+1;
+    const id = autoIncrement + 1;
     const newModel: T = {
       ...model,
       id,
