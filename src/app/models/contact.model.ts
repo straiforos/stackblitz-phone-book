@@ -9,8 +9,8 @@ import { PhoneNumber } from '@models/phone-number.model';
 
 export class Contact extends Person implements IContact {
   numbers: IPhoneNumber[] = [];
-  constructor(contactModel: IContact) {
-    super(contactModel);
+  constructor(contactModel: Partial<IContact>) {
+    super(contactModel as IContact);
     const { numbers } = contactModel;
     if (numbers && numbers.length > 0)
       this.numbers = numbers.map((n) => new PhoneNumber(n));

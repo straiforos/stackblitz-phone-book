@@ -25,5 +25,9 @@ export class ContactsService
     return super.create(model).pipe(map((c) => new Contact(c)));
   }
 
+  override read(id: number): Observable<Contact | undefined> {
+    return super.read(id).pipe(map((c) => (c ? new Contact(c) : c)));
+  }
+
   // TODO override create, update, delete to manipulate the relationship maps.
 }

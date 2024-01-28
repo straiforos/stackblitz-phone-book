@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { Contact as IContact } from '../../interfaces/models/contact';
 import { Contact } from '../../models/contact.model';
 import { ContactsService } from '../../services/contacts/contacts.service';
@@ -19,7 +19,6 @@ export class ContactFormComponent {
     private contactService: ContactsService,
     private router: Router,
   ) {}
-
   submit() {
     this.contactService
       .create(this.contact)

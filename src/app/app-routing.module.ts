@@ -1,21 +1,39 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {
+  provideRouter,
+  Route,
+  RouterModule,
+  Routes,
+  withComponentInputBinding,
+} from '@angular/router';
 import { ContactFormComponent, PhoneBookComponent } from './components';
+import { contactResolver } from './resolvers/contact.resolver';
+import { EditContactComponent } from '@components/edit-contact/edit-contact.component';
 
 export const routes: Routes = [
-  { path: "phone-book", component: PhoneBookComponent },
+  { path: 'phone-book', component: PhoneBookComponent },
   {
-    path: "add-contact",
-    component: ContactFormComponent,
+    path: 'contact',
+    children: [
+      {
+        path: 'add',
+        component: ContactFormComponent,
+      },
+      {
+        path: ':id',
+        component: EditContactComponent,
+        resolve: { contact: contactResolver },
+      },
+    ],
   },
   {
-    path: "",
-    redirectTo: "phone-book",
-    pathMatch: "prefix",
+    path: '',
+    redirectTo: 'phone-book',
+    pathMatch: 'prefix',
   },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

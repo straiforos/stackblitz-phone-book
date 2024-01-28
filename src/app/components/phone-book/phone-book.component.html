@@ -1,6 +1,6 @@
 <ol>
   <li *ngFor="let contact of contacts | async">
-    {{ contact | name }}
+    <a [routerLink]="['/contact', contact.id]" r>{{ contact | name }}</a>
     <ul>
       <li *ngFor="let phone of contact.numbers">
         {{ phone.phoneNumber | phoneNumber }}
@@ -8,4 +8,4 @@
     </ul>
   </li>
 </ol>
-<a [routerLink]="['/add-contact']">Add Contact</a>
+<a [routerLink]="['/contact/add']">Add Contact</a>
