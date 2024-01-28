@@ -3,9 +3,9 @@ import { ContactFormComponent } from '@components/contact-form/contact-form.comp
 import { ActivatedRoute } from '@angular/router';
 
 /**
- * Edit Contact Directive is an approach to extend not modify the existing creation form but inject the resolved data with more control and the withComponentInputBinding() can provide.
+ * Edit Contact Directive is an approach to extend not modify the existing creation form.
+ * Using resolved data with more control than the withComponentInputBinding() can provide which caused errors/regression.
  * @see EditContactComponent
- * @see withComponentInputBinding
  * @see contactResolver
  */
 @Directive({
