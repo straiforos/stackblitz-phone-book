@@ -1,11 +1,2 @@
-<ol>
-  <li *ngFor="let contact of contacts | async">
-    <a [routerLink]="['/contact', contact.id]" r>{{ contact | name }}</a>
-    <ul>
-      <li *ngFor="let phone of contact.numbers">
-        {{ phone.phoneNumber | phoneNumber }}
-      </li>
-    </ul>
-  </li>
-</ol>
+<app-phone-book-list [contacts]="contacts"></app-phone-book-list>
 <a [routerLink]="['/contact/add']">Add Contact</a>

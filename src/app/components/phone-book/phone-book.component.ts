@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable, tap } from 'rxjs';
-import { Contact as IContact } from '@interfaces/models/contact';
+import { Contact as IContact } from '@interfaces/models';
 import { ContactsService } from '@services/contacts/contacts.service';
 
 @Component({
