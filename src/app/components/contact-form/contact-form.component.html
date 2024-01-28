@@ -37,16 +37,6 @@
       [(ngModel)]="contact.preferredName"
     />
   </div>
-  <div>
-    <label for="phd">PHD</label>
-    <input
-      name="phd"
-      id="phd"
-      type="checkbox"
-      [ngModel]="!!contact.credentials"
-      (change)="toggleCredentials()"
-    />
-  </div>
 
   <div>
     <div *ngFor="let contactTelephone of contact.numbers">

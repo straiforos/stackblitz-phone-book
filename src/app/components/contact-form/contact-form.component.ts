@@ -26,11 +26,6 @@ export class ContactFormComponent {
       .subscribe();
   }
 
-  toggleCredentials() {
-    if (this.contact.credentials) this.contact.credentials = undefined;
-    else this.contact.credentials = 'PhD';
-  }
-
   addPhoneNumber() {
     this.contact.numbers.push(new PhoneNumber({}));
   }

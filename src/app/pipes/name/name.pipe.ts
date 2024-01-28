@@ -19,8 +19,7 @@ type FormatOptions = FirstnameLastname | LastnameFirstname;
 })
 export class NamePipe implements PipeTransform {
   transform(person: Person, format: FormatOptions = 'FL'): any {
-    const { firstName, lastName, middleName, credentials, preferredName } =
-      person;
+    const { firstName, lastName, middleName, preferredName } = person;
     let name = '';
     switch (format) {
       case 'FL':

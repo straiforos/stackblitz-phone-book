@@ -27,6 +27,10 @@ export const routes: Routes = [
     ],
   },
   {
+    path: 'dial',
+    component: PhoneBookComponent,
+  },
+  {
     path: '',
     redirectTo: 'phone-book',
     pathMatch: 'prefix',

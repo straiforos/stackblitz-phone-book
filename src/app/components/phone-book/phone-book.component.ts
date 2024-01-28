@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Contact as IContact } from '@interfaces/models';
 import { ContactsService } from '@services/contacts/contacts.service';
 
@@ -14,4 +14,8 @@ export class PhoneBookComponent {
   public contacts: Observable<IContact[]> = this.contactsService
     .findAll()
     .pipe(takeUntilDestroyed());
+
+  search($event: Event) {
+    // TODO fuzzy search for contacts on any data stored.
+  }
 }

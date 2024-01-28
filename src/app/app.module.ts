@@ -7,13 +7,16 @@ import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactsService } from './services';
-import { NamePipe } from './pipes';
-import { ContactFormComponent, PhoneBookComponent } from './components';
-import { PhoneNumberFormComponent } from './components/phone-number-form/phone-number-form.component';
-import { PhoneNumberPipe } from '@pipes/phone-number/phone-number.pipe';
-import { EditContactComponent } from './components/edit-contact/edit-contact.component';
-import { EditContactDirective } from '@directives/edit-contact/edit-contact.directive';
-import { PhoneBookListComponent } from './components/phone-book-list/phone-book-list.component';
+import { NamePipe, PhoneNumberPipe } from './pipes';
+import {
+  ContactFormComponent,
+  DialComponent,
+  EditContactComponent,
+  PhoneBookComponent,
+  PhoneBookListComponent,
+  PhoneNumberFormComponent,
+} from './components';
+import { EditContactDirective } from './directives';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,7 @@ import { PhoneBookListComponent } from './components/phone-book-list/phone-book-
     EditContactComponent,
     EditContactDirective,
     PhoneBookListComponent,
+    DialComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, CommonModule, FormsModule],
   providers: [ContactsService, NamePipe],
