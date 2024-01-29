@@ -1,4 +1,4 @@
-<input type="search" (change)="search($event)"/>
+<input type="search" placeholder="Search by Name" [(ngModel)]="nameSearch"/>
 <app-phone-book-list [contacts]="contacts"></app-phone-book-list>
 <div>
   <!-- Make a navigation -->

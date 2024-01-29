@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, DestroyRef } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Observable } from 'rxjs';
 import { Contact as IContact } from '@interfaces/models';
@@ -10,12 +10,31 @@ import { ContactsService } from '@services/contacts/contacts.service';
   styleUrls: ['./phone-book.component.css'],
 })
 export class PhoneBookComponent {
-  constructor(private contactsService: ContactsService) {}
+  constructor(
+    private contactsService: ContactsService,
+    private destroyRef: DestroyRef,
+  ) {}
   public contacts: Observable<IContact[]> = this.contactsService
     .findAll()
     .pipe(takeUntilDestroyed());
+  private _nameSearch: string = '';
 
-  search($event: Event) {
-    // TODO fuzzy search for contacts on any data stored.
+  get nameSearch(): string {
+    return this._nameSearch;
+  }
+
+  set nameSearch(value: string) {
+    this._nameSearch = value;
+    this.search(this._nameSearch);
+  }
+  search(fullName: string) {
+    if (fullName)
+      this.contacts = this.contactsService
+        .searchByName(fullName)
+        .pipe(takeUntilDestroyed(this.destroyRef));
+    else
+      this.contacts = this.contactsService
+        .findAll()
+        .pipe(takeUntilDestroyed(this.destroyRef));
   }
 }

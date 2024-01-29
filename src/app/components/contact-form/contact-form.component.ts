@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Contact as IContact } from '@interfaces/models';
 import { Contact } from '@models/contact.model';
 import { ContactsService } from '@services/contacts/contacts.service';
-import { switchMap } from 'rxjs';
+import { Observable, switchMap } from 'rxjs';
 import { fromPromise } from 'rxjs/internal/observable/innerFrom';
 import { Router } from '@angular/router';
 import { PhoneNumber } from '@models/phone-number.model';
@@ -20,8 +20,11 @@ export class ContactFormComponent {
     private router: Router,
   ) {}
   submit() {
-    this.contactService
-      .create(this.contact)
+    const createOrUpdateContact: Observable<Contact> = this.contact.id
+      ? this.contactService.update(this.contact)
+      : this.contactService.create(this.contact);
+
+    createOrUpdateContact
       .pipe(switchMap(() => fromPromise(this.router.navigate(['/phone-book']))))
       .subscribe();
   }

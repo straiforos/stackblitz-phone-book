@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContactFormComponent, PhoneBookComponent } from './components';
+import {
+  ContactFormComponent,
+  DialComponent,
+  PhoneBookComponent,
+} from './components';
 import { contactResolver } from './resolvers/contact.resolver';
 import { EditContactComponent } from '@components/edit-contact/edit-contact.component';
 
@@ -22,12 +26,11 @@ export const routes: Routes = [
   },
   {
     path: 'dial',
-    component: PhoneBookComponent,
+    component: DialComponent,
   },
   {
-    path: '',
+    path: '**',
     redirectTo: 'phone-book',
-    pathMatch: 'prefix',
   },
 ];
 @NgModule({

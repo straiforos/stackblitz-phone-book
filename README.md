@@ -5,7 +5,7 @@ A interview assessment to test Typescript and Angular skills. The following obje
  - [X] Create a phonebook capable of storing and editing phonebook records.
    - Phonebook is the main landing page on initial load.
  - [X] Implement efficient lookup capabilities in both directions:
-   - Lookups should be O(1) if possible. Use of in-memory indexies/Maps should allow this functionality.
+   - Lookups should be O(1) if possible. Use of in-memory indexes/Maps should allow this functionality.
  - [X] Retrieve a list of phone numbers by contact name.
    - Edit will pull up their phone numbers.
    - Search should show all matching numbers for a given name.
