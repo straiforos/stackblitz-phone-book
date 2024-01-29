@@ -1,13 +1,6 @@
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { Entity } from '@interfaces/models/mixins/entity';
 import { CRUD } from '@interfaces/services';
-/**
- * Could not find a declaration file for module 'lodash'. '/turbo_modules/lodash@4.17.21/lodash.js'
- * implicitly has an 'any' type.
- * Try `npm i --save-dev @types/lodash` if it exists or add a new declaration (.d.ts) file containing
- * `declare module 'lodash';`
- */
-// import { uniqBy } from 'lodash';
 
 export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
   /**
