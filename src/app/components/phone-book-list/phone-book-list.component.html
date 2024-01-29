@@ -1,12 +1,14 @@
 <ol *ngIf="contacts && contacts.length > 0 else addContactMessage;">
   <li *ngFor="let contact of contacts">
     <a [routerLink]="['/contact', contact.id]" r>{{ contact | name }}</a>
-    <span> Added: {{ contact.createdAt |  date: 'medium' }}</span>
-    <span> Updated: {{ contact.updatedAt |  date: 'medium' }}</span>
     <ul>
       <li *ngFor="let phone of contact.numbers">
         {{ phone.phoneNumber | phoneNumber }} - {{ phone.type | titlecase }}
       </li>
+    </ul>
+    <ul>
+      <li> Added: {{ contact.createdAt |  date: 'medium' }}</li>
+      <li> Updated: {{ contact.updatedAt |  date: 'medium' }}</li>
     </ul>
   </li>
 </ol>
