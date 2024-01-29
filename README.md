@@ -10,7 +10,8 @@ A interview assessment to test Typescript and Angular skills. The following obje
    - Edit will pull up their phone numbers.
    - Search should show all matching numbers for a given name.
  - [X] Perform reverse lookup to find customers using a specific phone number.
-   - Search bar that allows for name and number lookup displaying matches.
+   - Search bar that allows for name lookup displaying matches.
+   - Call/Dial view allows for reverse lookup via phone numbers.
 
 ## Standard Angular documentation
 
