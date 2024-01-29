@@ -42,7 +42,7 @@
     <div *ngFor="let contactTelephone of contact.numbers">
       <app-phone-number-form [phone]="contactTelephone"></app-phone-number-form>
     </div>
-    <a (click)="addPhoneNumber()">+ Add Phone Number</a>
+    <button type="button" (click)="addPhoneNumber()">+ Add Phone Number</button>
   </div>
 
   <button type="submit" [disabled]="contactForm.invalid">Save</button>
