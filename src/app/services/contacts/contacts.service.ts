@@ -95,7 +95,7 @@ export class ContactsService
           this.namePipe
             .transform(contact as Person, 'FMLP')
             .toLowerCase()
-            .includes(fullName),
+            .includes(fullName.toLowerCase()),
         ),
       ),
     );
