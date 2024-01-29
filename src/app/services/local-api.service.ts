@@ -69,10 +69,13 @@ export class LocalAPIService<T extends Entity> implements CRUD<T, number> {
     const existingModel = this.index.get(model.id);
     const indexOfModel = !!existingModel
       ? this.collection.indexOf(existingModel)
-      : null;
+      : -1;
     // Update the model in the collection using index. If no index we just add it to the collection.
-    if (indexOfModel) this.collection[indexOfModel] = updatedModel;
-    else this.collection.push(updatedModel);
+    if (indexOfModel >= 0) {
+      this.collection[indexOfModel] = updatedModel;
+    } else {
+      this.collection.push(updatedModel);
+    }
     // Replace the model in the index so no caches/stale entities can be returned.
     this.index.set(model.id, updatedModel);
     return of(updatedModel);
