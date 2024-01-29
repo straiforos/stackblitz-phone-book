@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ContactsService } from '@services/contacts/contacts.service';
-import { combineLatestAll, Observable, Subject } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Contact } from '@interfaces/models';
 
 @Component({
@@ -11,7 +11,7 @@ import { Contact } from '@interfaces/models';
 export class DialComponent {
   constructor(private contactService: ContactsService) {}
   private _phoneNumber: string = '';
-  contactsFound: Observable<Contact[]> = new Subject();
+  contactsFound: Observable<Contact[]> = of([]);
   get phoneNumber(): string {
     return this._phoneNumber;
   }

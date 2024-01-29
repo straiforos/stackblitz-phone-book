@@ -1,5 +1,5 @@
-<ol>
-  <li *ngFor="let contact of contacts | async">
+<ol *ngIf="contacts && contacts.length > 0 else addContactMessage;">
+  <li *ngFor="let contact of contacts">
     <a [routerLink]="['/contact', contact.id]" r>{{ contact | name }}</a>
     <ul>
       <li *ngFor="let phone of contact.numbers">
@@ -8,3 +8,6 @@
     </ul>
   </li>
 </ol>
+<ng-template #addContactMessage>
+  <h4>{{ emptyMessage }}</h4>
+</ng-template>
